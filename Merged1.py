@@ -14,7 +14,7 @@ count = 1
 global count_positive
 count_positive = 0
 global High_Risk_Sections
-High_Risk_Sections = ['']
+High_Risk_Sections = []
 
 
 class severity():
@@ -64,9 +64,9 @@ class user:
         D = a.D2
         S = a.status
         L = input("Vector location @abhay")
-    if S == "High Risk":
-        High_Risk_Sections.append(C)
-    print(High_Risk_Sections)
+        if S == "High Risk":
+            High_Risk_Sections.append(C)
+        print(High_Risk_Sections)
 
 
 global U
