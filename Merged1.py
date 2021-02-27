@@ -85,8 +85,8 @@ def write():
     SD.value = D
     SS = ws.cell(row=count, column=3)
     SS.value = S
-    SL = ws.cell(row=count, column=4)
-    SL.value = L
+    #SL = ws.cell(row=count, column=4)
+    #SL.value = L
     SC = ws.cell(row=count, column=5)
     SC.value = C
     wb.save('DataRepo.xlsx')
