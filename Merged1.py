@@ -41,8 +41,11 @@ class severity():
     l_date = date(int(d2[0]), int(d2[1]), int(d2[2]))
     delta = f_date - l_date
     x = delta.days
+    #Risk period 3 months
     if x >= 90:
         status = "High Risk"
+    elif x>90 and x<180:
+        status="Medium Risk"
     else:
         status = "Low Risk"
 
@@ -51,10 +54,10 @@ a = severity()
 
 # Format of Data Storage: Name, Severity, Location
 class user:
-    global N, D, S, L, C
+    global N, D, S, C #L
     N = str()
     S = str()
-    L = str()
+    #L = str()
     C = str()
 
     def input(self):
@@ -63,7 +66,7 @@ class user:
         C = input("Enter your section : ")
         D = a.D2
         S = a.status
-        L = input("Vector location @abhay")
+        #L = input("Vector location @abhay")
         if S == "High Risk":
             High_Risk_Sections.append(C)
         print(High_Risk_Sections)
@@ -76,8 +79,6 @@ U.input()  # This inputs
 
 # Function to write
 def write():
-    # global count
-    # global U
     SN = ws.cell(row=count, column=1)
     SN.value = N
     SD = ws.cell(row=count, column=2)
@@ -92,13 +93,6 @@ def write():
 
 
 write()
-# Works till here
-'''
-wb.save('DataRepo.xlsx')
-#saves the data
-'''
-
-
 # Function to read
 def read():
     SN = ws.cell(row=count, column=1)
@@ -107,8 +101,8 @@ def read():
     D = SD.value
     SS = ws.cell(row=count, column=3)
     S = SS.value
-    SL = ws.cell(row=count, column=4)
-    L = SL.value
+    #SL = ws.cell(row=count, column=4)
+    #L = SL.value
 
 
 # function usage
