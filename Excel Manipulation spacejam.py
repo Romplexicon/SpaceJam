@@ -13,33 +13,37 @@ global count
 count=1
 #Format of Data Storage: Name, Severity, Location
 class user:
+    global N,D,S,L
     N= str()
     D= datetime.datetime(2020,1,1)
     #YY,MM,DD
     S= str()
     L= str()
-    def input():
+    def input(self):
+        global N,D,S,L
         N=input("Enter your name")
         D=input("Date tested")
         S=input("Calculated severity @Anish")
         L=input("Vector location @abhay")
-#Works till here
-'''
 global U
 U=user()
+U.input()#This inputs
+#Function to write
 def write():
     #global count
     #global U
     SN=ws.cell(row=count,column=1)
-    SN.value=U.N
+    SN.value=N
     SD=ws.cell(row=count,column=2)
-    SD.value=U.D
+    SD.value=D
     SS=ws.cell(row=count,column=3)
-    SS.value=U.S
+    SS.value=S
     SL=ws.cell(row=count,column=4)
-    SL.value=U.L
+    SL.value=L
     wb.save('DataRepo.xlsx')
-
+write()
+#Works till here
+'''
 wb.save('DataRepo.xlsx')
 #saves the data
 '''
