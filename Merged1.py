@@ -1,4 +1,7 @@
+#still a few bugs
 from datetime import date
+from typing import Dict, Any
+
 from openpyxl import Workbook, load_workbook
 # wb=Workbook()
 # No longer required after creation of excel sheet
@@ -24,7 +27,6 @@ class severity():
     d1 = today.strftime("%Y/%m/%d")
     d = d1.split("/")
     status = ""
-    test = input("Please enter if you tested negative for covid 19 after testing positive : ")
     D2 = input("Please enter the date you last tested negative for Covid-19. Enter in the form of YY/MM/DD : ")
     d2 = D2.split("/")
     f_date = date(int(d[0]), int(d[1]), int(d[2]))
@@ -35,8 +37,6 @@ class severity():
         status = "High Risk"
     else:
         status = "Low Risk"
-
-
     # Format of Data Storage: Name, Severity, Location
 class user:
     global N, D, S, L, C, n
@@ -50,12 +50,9 @@ class user:
         C = input("Enter your section : ")
         D = a.D2
         S = a.status
-        L = input("Vector location @abhay")
         print(S)
         if S == "High Risk":
-            High_Risk_Sections.append(C)
-        print(High_Risk_Sections)
-
+            High_Risk_Sections.append(C.upper())
 global U
 
     # Function to write
@@ -83,13 +80,23 @@ def read():
     S = SS.value
     SL = ws.cell(row=count, column=4)
     L = SL.value
-
-
+    SC = ws.cell(row=count, column=4)
+    C = SC.value
+l = []
+d = {}
     # function usage
-for i in range(0, n):
+for i in range(1, n+1):
+    var = input(a.D2)
     a = severity()
     U = user()
     U.user_input()  # This inputs
     write()
     read()
     count += 1
+    x = ws.cell(row = i, column = 5).value
+    if x.upper == "A" or 'a':
+       l.append(ws.cell(row = i, column = 1).value)
+d[x.upper] = l
+print(d)
+print(f"These are the sections which are at a high risk : {High_Risk_Sections}")
+print("If you are in a high risk section, please actively stay away from others.")
