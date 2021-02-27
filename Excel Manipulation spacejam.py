@@ -30,8 +30,6 @@ U=user()
 U.input()#This inputs
 #Function to write
 def write():
-    #global count
-    #global U
     SN=ws.cell(row=count,column=1)
     SN.value=N
     SD=ws.cell(row=count,column=2)
@@ -43,7 +41,19 @@ def write():
     wb.save('DataRepo.xlsx')
 write()
 #Works till here
-'''
-wb.save('DataRepo.xlsx')
-#saves the data
-'''
+
+#Function to read
+def read():
+    SN=ws.cell(row=count,column=1)
+    N=SN.value
+    SD=ws.cell(row=count,column=2)
+    D=SD.value
+    SS=ws.cell(row=count,column=3)
+    S=SS.value
+    SL=ws.cell(row=count,column=4)
+    L=SL.value
+
+#function usage
+
+write()
+read()
