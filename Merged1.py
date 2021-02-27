@@ -3,11 +3,11 @@ from openpyxl import Workbook, load_workbook
 
 # wb=Workbook()
 # No longer required after creation of excel sheet
-wb = load_workbook('/Users/Anish/Downloads/DataRepo.xlsx')
+wb = load_workbook('DataRepo.xlsx')
 ws = wb.active
 # Opens a sheet to start working on
 ws.title = "Input Data"
-wb.save('/Users/Anish/Downloads/DataRepo.xlsx')
+wb.save('DataRepo.xlsx')
 flag = 0
 global count
 count = 1
@@ -88,7 +88,7 @@ def write():
     SL.value = L
     SC = ws.cell(row=count, column=5)
     SC.value = C
-    wb.save('/Users/Anish/Downloads/DataRepo.xlsx')
+    wb.save('DataRepo.xlsx')
 
 
 write()
