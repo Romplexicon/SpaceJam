@@ -56,7 +56,7 @@ a = severity()
 class user:
     global N, D, S, C #L
     N = str()
-    S = str()
+    S = severity()
     #L = str()
     C = str()
 
