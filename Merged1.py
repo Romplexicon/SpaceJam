@@ -1,8 +1,9 @@
-#still a few bugs
+
 from datetime import date
 from typing import Dict, Any
 
 from openpyxl import Workbook, load_workbook
+print("~~~~~~~~~~~~~~~~~~~~~~~~COVID RISK CALCULATOR~~~~~~~~~~~~~~~~~~~~~~")
 # wb=Workbook()
 # No longer required after creation of excel sheet
 wb = load_workbook('/Users/Anish/Downloads/DataRepo.xlsx')
@@ -47,7 +48,7 @@ class user:
     def user_input(self):
         global N, D, S, L
         N = input("Enter your name : ")
-        C = input("Enter your section : ")
+        C = input("Enter your section in Block letters: ")
         D = a.D2
         S = a.status
         print(S)
@@ -80,13 +81,14 @@ def read():
     S = SS.value
     SL = ws.cell(row=count, column=4)
     L = SL.value
-    SC = ws.cell(row=count, column=4)
+    SC = ws.cell(row=count, column=5)
     C = SC.value
-l = []
+la = []
+lb = []
+lc = []
 d = {}
     # function usage
 for i in range(1, n+1):
-    var = input(a.D2)
     a = severity()
     U = user()
     U.user_input()  # This inputs
@@ -94,9 +96,19 @@ for i in range(1, n+1):
     read()
     count += 1
     x = ws.cell(row = i, column = 5).value
-    if x.upper == "A" or 'a':
-       l.append(ws.cell(row = i, column = 1).value)
-d[x.upper] = l
+    if x == "A" :
+       la.append(ws.cell(row = i, column = 1).value)
+       d['A'] = la
+    elif x.upper == "B":
+        lb.append(ws.cell(row = i, column = 1).value)
+        d['B'] = lb
+    elif x.upper == "C":
+        lc.append(ws.cell(row = i, column = 1).value)
+        d['C'] = lc
+    else:
+        print("Sorry! This version of the app is only taking for the first three sections at this point in time.")
+        break
+
 print(d)
 print(f"These are the sections which are at a high risk : {High_Risk_Sections}")
 print("If you are in a high risk section, please actively stay away from others.")
